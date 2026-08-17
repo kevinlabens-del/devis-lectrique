@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#172554" />
-  <title>Devis Électrique - Générateur de devis V13</title>
-  <link rel="manifest" href="manifest.webmanifest" />
+  <title>Devis Électrique - Générateur de devis V13.2</title>
+  <link rel="manifest" href="manifest.webmanifest?v=13.2.0" />
   <link rel="icon" href="icon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=13.2.0" />
 </head>
 <body>
   <header class="topbar no-print">
@@ -31,7 +31,7 @@
   <main class="app-shell">
     <section class="document-intro no-print">
       <div>
-        <span class="doc-chip">GÉNÉRATEUR DE DEVIS</span>
+        <span class="doc-chip">GÉNÉRATEUR DE DEVIS · V13.2</span>
         <h2>Un devis propre, directement au bon format</h2>
         <p>Renseigne le chantier et les travaux. Le PDF reprend automatiquement le design bleu marine et jaune du document final.</p>
       </div>
@@ -39,12 +39,7 @@
     </section>
 
     <section class="card project-card document-card">
-      <div class="section-title">
-        <div>
-          <span class="eyebrow">01 · CHANTIER</span>
-          <h2>Informations du chantier</h2>
-        </div>
-      </div>
+      <div class="section-title"><div><span class="eyebrow">01 · CHANTIER</span><h2>Informations du chantier</h2></div></div>
       <div class="grid three">
         <label>Nom du client<input id="clientName" type="text" placeholder="Nom / Référence client" /></label>
         <label>Adresse du chantier<input id="siteAddress" type="text" placeholder="Adresse du pavillon" /></label>
@@ -54,12 +49,7 @@
     </section>
 
     <section class="card no-print">
-      <div class="section-title">
-        <div>
-          <span class="eyebrow">02 · TRAVAUX</span>
-          <h2>Ajouter une pièce ou une zone</h2>
-        </div>
-      </div>
+      <div class="section-title"><div><span class="eyebrow">02 · TRAVAUX</span><h2>Ajouter une pièce ou une zone</h2></div></div>
       <div class="quick-add">
         <select id="roomPreset">
           <option value="Salon">Salon</option><option value="Séjour">Séjour</option><option value="Cuisine">Cuisine</option>
@@ -76,12 +66,7 @@
     <section id="roomsSection" class="rooms"></section>
 
     <section class="card pricing-card document-card">
-      <div class="section-title">
-        <div>
-          <span class="eyebrow">03 · CONDITIONS</span>
-          <h2>Prix forfaitaire et règlement</h2>
-        </div>
-      </div>
+      <div class="section-title"><div><span class="eyebrow">03 · CONDITIONS</span><h2>Prix forfaitaire et règlement</h2></div></div>
       <p class="field-help">Ces champs sont facultatifs. Laisse-les vides si tu veux générer uniquement un relevé de travaux.</p>
       <div class="grid three pricing-grid">
         <label>Prix forfaitaire (€)<input id="fixedPrice" type="number" min="0" step="0.01" placeholder="Ex. 700" /></label>
@@ -93,10 +78,7 @@
 
     <section class="card materials-card document-card" id="materialsCard">
       <div class="section-title">
-        <div>
-          <span class="eyebrow">04 · MATÉRIEL</span>
-          <h2>Liste de matériel</h2>
-        </div>
+        <div><span class="eyebrow">04 · MATÉRIEL</span><h2>Liste de matériel</h2></div>
         <div class="material-actions no-print">
           <button id="syncMaterialsBtn" class="btn ghost">↻ Reconstruire depuis le devis</button>
           <button id="addMaterialBtn" class="btn">+ Ajouter une ligne</button>
@@ -114,13 +96,7 @@
     </section>
 
     <section class="card summary-card" id="summaryCard">
-      <div class="section-title">
-        <div>
-          <span class="eyebrow">05 · SYNTHÈSE</span>
-          <h2>Récapitulatif du chantier</h2>
-        </div>
-        <button id="copySummaryBtn" class="btn ghost no-print">Copier le récapitulatif</button>
-      </div>
+      <div class="section-title"><div><span class="eyebrow">05 · SYNTHÈSE</span><h2>Récapitulatif du chantier</h2></div><button id="copySummaryBtn" class="btn ghost no-print">Copier le récapitulatif</button></div>
       <div id="summaryEmpty" class="empty">Ajoute des zones et des prestations pour générer le récapitulatif.</div>
       <div id="summaryContent"></div>
     </section>
@@ -129,92 +105,62 @@
   <template id="roomTemplate">
     <article class="card room-card">
       <div class="room-head">
-        <div class="room-title-wrap">
-          <span class="room-badge">PIÈCE / ZONE</span>
-          <input class="room-name" aria-label="Nom de la zone" />
-        </div>
-        <div class="room-actions no-print">
-          <button class="icon-btn duplicate-room" title="Dupliquer">⧉</button>
-          <button class="icon-btn danger delete-room" title="Supprimer">✕</button>
-        </div>
+        <div class="room-title-wrap"><span class="room-badge">PIÈCE / ZONE</span><input class="room-name" aria-label="Nom de la zone" /></div>
+        <div class="room-actions no-print"><button class="icon-btn duplicate-room" title="Dupliquer">⧉</button><button class="icon-btn danger delete-room" title="Supprimer">✕</button></div>
       </div>
-
       <div class="items-table">
-        <div class="items-head">
-          <span>Désignation des travaux</span><span>Qté</span><span>Précisions</span><span class="no-print"></span>
-        </div>
+        <div class="items-head"><span>Désignation des travaux</span><span>Qté</span><span>Précisions</span><span class="no-print"></span></div>
         <div class="items-list"></div>
       </div>
-
       <div class="room-add no-print">
-        <select class="service-select"></select>
+        <select class="service-category" aria-label="Catégorie de prestation">
+          <option value="Prises">Prises</option>
+          <option value="Commandes">Commandes</option>
+          <option value="Éclairage intérieur">Éclairage intérieur</option>
+          <option value="Éclairage extérieur">Éclairage extérieur</option>
+          <option value="Tableau & protections">Tableau & protections</option>
+          <option value="Circuits spécialisés">Circuits spécialisés</option>
+          <option value="Chauffage & ventilation">Chauffage & ventilation</option>
+          <option value="Volets, portail & accès">Volets, portail & accès</option>
+          <option value="Réseau, TV & communication">Réseau, TV & communication</option>
+          <option value="Sécurité">Sécurité</option>
+          <option value="Câblage & cheminement">Câblage & cheminement</option>
+          <option value="Boîtes & raccordements">Boîtes & raccordements</option>
+          <option value="Terre & équipotentialité">Terre & équipotentialité</option>
+          <option value="Extérieur, jardin & dépendances">Extérieur, jardin & dépendances</option>
+          <option value="Rénovation & dépannage">Rénovation & dépannage</option>
+        </select>
+        <select class="service-select" aria-label="Prestation"></select>
         <button class="btn add-item">+ Ajouter la prestation</button>
         <button class="btn ghost add-custom">+ Ligne personnalisée</button>
       </div>
-
       <label class="room-note-label">Notes de la zone<textarea class="room-note" rows="2" placeholder="Cheminement, hauteur, encastré/apparent, contraintes particulières..."></textarea></label>
     </article>
   </template>
 
   <template id="itemTemplate">
-    <div class="item-row">
-      <input class="item-name" aria-label="Prestation" />
-      <input class="item-qty" type="number" min="0" step="1" value="1" aria-label="Quantité" />
-      <input class="item-note" placeholder="Détail" aria-label="Note" />
-      <button class="icon-btn danger delete-item no-print" title="Supprimer">✕</button>
-    </div>
+    <div class="item-row"><input class="item-name" aria-label="Prestation" /><input class="item-qty" type="number" min="0" step="1" value="1" aria-label="Quantité" /><input class="item-note" placeholder="Détail" aria-label="Note" /><button class="icon-btn danger delete-item no-print" title="Supprimer">✕</button></div>
   </template>
 
   <template id="materialTemplate">
-    <div class="material-row" data-manual="0">
-      <div class="material-name-wrap"><span class="material-mode auto">AUTO</span><input class="material-name" aria-label="Matériel" /></div>
-      <input class="material-qty" type="text" aria-label="Quantité" />
-      <input class="material-note" aria-label="Destination / précision" placeholder="Destination / précision" />
-      <button class="icon-btn danger delete-material no-print" title="Supprimer">✕</button>
-    </div>
+    <div class="material-row" data-manual="0"><div class="material-name-wrap"><span class="material-mode auto">AUTO</span><input class="material-name" aria-label="Matériel" /></div><input class="material-qty" type="text" aria-label="Quantité" /><input class="material-note" aria-label="Destination / précision" placeholder="Destination / précision" /><button class="icon-btn danger delete-material no-print" title="Supprimer">✕</button></div>
   </template>
 
   <div id="pdfPreviewModal" class="pdf-preview-modal" hidden>
     <div class="pdf-preview-panel" role="dialog" aria-modal="true" aria-labelledby="pdfPreviewTitle">
-      <div class="pdf-preview-head">
-        <div>
-          <span class="eyebrow">PRÉVISUALISATION A4</span>
-          <h2 id="pdfPreviewTitle">Aperçu du document</h2>
-          <p id="pdfPreviewHint">Vérifie le rendu avant de générer ou partager le PDF.</p>
-        </div>
-        <button id="closePdfPreviewBtn" class="icon-btn" aria-label="Fermer">✕</button>
-      </div>
-      <div class="pdf-preview-frame-wrap">
-        <div id="pdfPreviewCanvas" class="pdf-preview-canvas" aria-label="Prévisualisation A4"></div>
-      </div>
-      <div class="pdf-preview-actions">
-        <button id="cancelPdfPreviewBtn" class="btn ghost">← Retour aux modifications</button>
-        <button id="confirmPdfBtn" class="btn primary">▣ Générer / partager ce PDF</button>
-      </div>
+      <div class="pdf-preview-head"><div><span class="eyebrow">PRÉVISUALISATION A4</span><h2 id="pdfPreviewTitle">Aperçu du document</h2><p id="pdfPreviewHint">Vérifie le rendu avant de générer ou partager le PDF.</p></div><button id="closePdfPreviewBtn" class="icon-btn" aria-label="Fermer">✕</button></div>
+      <div class="pdf-preview-frame-wrap"><div id="pdfPreviewCanvas" class="pdf-preview-canvas" aria-label="Prévisualisation A4"></div></div>
+      <div class="pdf-preview-actions"><button id="cancelPdfPreviewBtn" class="btn ghost">← Retour aux modifications</button><button id="confirmPdfBtn" class="btn primary">▣ Générer / partager ce PDF</button></div>
     </div>
   </div>
 
   <div id="transferModal" class="transfer-modal" hidden>
     <div class="transfer-panel" role="dialog" aria-modal="true" aria-labelledby="transferTitle">
-      <div class="transfer-head">
-        <div>
-          <span class="eyebrow">SAUVEGARDE / TRANSFERT</span>
-          <h2 id="transferTitle">Transférer mon relevé</h2>
-        </div>
-        <button id="closeTransferBtn" class="icon-btn" aria-label="Fermer">✕</button>
-      </div>
+      <div class="transfer-head"><div><span class="eyebrow">SAUVEGARDE / TRANSFERT</span><h2 id="transferTitle">Transférer mon relevé</h2></div><button id="closeTransferBtn" class="icon-btn" aria-label="Fermer">✕</button></div>
       <p class="transfer-help">Pour récupérer ce relevé dans un autre navigateur ou dans la PWA publiée, copie ce code puis colle-le dans l'autre version de l'application.</p>
       <textarea id="transferCode" rows="8" spellcheck="false" placeholder="Le code de sauvegarde apparaîtra ici…"></textarea>
-      <div class="transfer-actions">
-        <button id="makeBackupBtn" class="btn primary">Copier ma sauvegarde</button>
-        <button id="pasteBackupBtn" class="btn">Coller depuis le presse-papiers</button>
-        <button id="importBackupBtn" class="btn">Importer ce code</button>
-      </div>
-      <div class="transfer-actions transfer-actions-secondary">
-        <button id="exportBackupFileBtn" class="btn ghost">Enregistrer la sauvegarde (.json)</button>
-        <button id="importBackupFileBtn" class="btn ghost">Importer un fichier</button>
-        <input id="backupFileInput" type="file" accept="application/json,.json,.releve" hidden />
-      </div>
+      <div class="transfer-actions"><button id="makeBackupBtn" class="btn primary">Copier ma sauvegarde</button><button id="pasteBackupBtn" class="btn">Coller depuis le presse-papiers</button><button id="importBackupBtn" class="btn">Importer ce code</button></div>
+      <div class="transfer-actions transfer-actions-secondary"><button id="exportBackupFileBtn" class="btn ghost">Enregistrer la sauvegarde (.json)</button><button id="importBackupFileBtn" class="btn ghost">Importer un fichier</button><input id="backupFileInput" type="file" accept="application/json,.json,.releve" hidden /></div>
       <p class="transfer-help small"><strong>Conseil Android :</strong> appuie sur « Enregistrer la sauvegarde (.json) ». Le navigateur doit placer le fichier dans <strong>Téléchargements / Download</strong>.</p>
       <p id="backupDownloadInfo" class="transfer-help small" aria-live="polite"></p>
       <p class="transfer-warning"><strong>Important :</strong> ne clique pas sur « Nouveau » avant d'avoir transféré ton relevé actuel.</p>
@@ -222,7 +168,7 @@
   </div>
 
   <div id="toast" class="toast" role="status"></div>
-  <script src="app.js"></script>
-  <script src="catalog-v13.js"></script>
+  <script src="app.js?v=13.2.0"></script>
+  <script src="catalog-v13.js?v=13.2.0"></script>
 </body>
 </html>
