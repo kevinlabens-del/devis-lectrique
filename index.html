@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#172554" />
-  <title>Devis Électrique - Générateur de devis V12</title>
+  <title>Devis Électrique - Générateur de devis V13</title>
   <link rel="manifest" href="manifest.webmanifest" />
   <link rel="icon" href="icon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="styles.css" />
@@ -91,7 +91,6 @@
       <label>Conditions complémentaires<textarea id="paymentNotes" rows="2" placeholder="Ex. Le solde restant sera réglé en fin de chantier."></textarea></label>
     </section>
 
-
     <section class="card materials-card document-card" id="materialsCard">
       <div class="section-title">
         <div>
@@ -166,7 +165,6 @@
     </div>
   </template>
 
-
   <template id="materialTemplate">
     <div class="material-row" data-manual="0">
       <div class="material-name-wrap"><span class="material-mode auto">AUTO</span><input class="material-name" aria-label="Matériel" /></div>
@@ -175,7 +173,6 @@
       <button class="icon-btn danger delete-material no-print" title="Supprimer">✕</button>
     </div>
   </template>
-
 
   <div id="pdfPreviewModal" class="pdf-preview-modal" hidden>
     <div class="pdf-preview-panel" role="dialog" aria-modal="true" aria-labelledby="pdfPreviewTitle">
@@ -226,5 +223,6 @@
 
   <div id="toast" class="toast" role="status"></div>
   <script src="app.js"></script>
+  <script src="catalog-v13.js"></script>
 </body>
 </html>
