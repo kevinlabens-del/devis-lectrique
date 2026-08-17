@@ -1,0 +1,17 @@
+{
+  "name": "Devis Électrique V12",
+  "short_name": "Devis Elec",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f4f7fb",
+  "theme_color": "#101828",
+  "description": "Générateur de devis électriques avec aperçu A4, PDF et liste de matériel automatique modifiable.",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
