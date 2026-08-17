@@ -1,11 +1,13 @@
 {
-  "name": "Devis Électrique V12",
+  "name": "Devis Électrique V13.2",
   "short_name": "Devis Elec",
-  "start_url": "./",
+  "id": "./",
+  "start_url": "./?v=13.2.0",
+  "scope": "./",
   "display": "standalone",
   "background_color": "#f4f7fb",
-  "theme_color": "#101828",
-  "description": "Générateur de devis électriques avec aperçu A4, PDF et liste de matériel automatique modifiable.",
+  "theme_color": "#172554",
+  "description": "Générateur de devis électriques avec catégories de prestations, aperçu A4, PDF et liste de matériel automatique modifiable.",
   "icons": [
     {
       "src": "icon.svg",
